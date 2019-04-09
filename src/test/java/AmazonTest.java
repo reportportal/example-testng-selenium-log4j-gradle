@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 
-public class AmazonTest extends TestBase{
+public class AmazonTest extends TestBase {
 
     private Logger logger = LoggerFactory.getLogger(AmazonTest.class);
 
