@@ -1,5 +1,7 @@
-
+import com.google.common.io.BaseEncoding;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
@@ -38,13 +40,23 @@ public class AmazonTest extends TestBase {
                 .findElement(By.xpath("//*[@id=\"nav-search\"]/form/div[2]/div/input"))
                 .click();
 
+        takeScreenshot();
+
         delay();
+    }
+
+    private void takeScreenshot() {
+        byte[] screenshot = ((TakesScreenshot) TestBase.getDriver()).getScreenshotAs(OutputType.BYTES);
+
+        logger.info("RP_MESSAGE#BASE64#{}#{}",
+                BaseEncoding.base64().encode(screenshot),
+                "Some message");
     }
 
     private void delay() {
 
         try {
-            Thread.sleep(3_000);
+            Thread.sleep(5_000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
